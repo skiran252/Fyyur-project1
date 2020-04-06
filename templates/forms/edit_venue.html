@@ -1,10 +1,11 @@
 {% extends 'layouts/main.html' %}
-{% block title %}Edit Artist{% endblock %}
+{% block title %}Edit Venue{% endblock %}
 {% block content %}
 <div class="form-wrapper">
-    <form class="form" method="post" action="/artists/{{artist.id}}/edit">
+    <form class="form" method="post" action="/venues/{{venue.id}}/edit">
         {{ form.csrf_token }}
-        <h3 class="form-heading">Edit artist <em>{{ artist.name }}</em></h3>
+        <h3 class="form-heading">Edit venue <em>{{ venue.name }}</em> <a href="{{ url_for('index') }}"
+                title="Back to homepage"><i class="fa fa-home pull-right"></i></a></h3>
         <div class="form-group">
             <label for="name">Name</label>
             {{ form.name(class_ = 'form-control', autofocus = true) }}
@@ -21,6 +22,10 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="address">Address</label>
+            {{ form.address(class_ = 'form-control', autofocus = true) }}
+        </div>
+        <div class="form-group">
             <label for="phone">Phone</label>
             {{ form.phone(class_ = 'form-control', placeholder='xxx-xxx-xxxx', autofocus = true) }}
         </div>
@@ -33,8 +38,8 @@
             {% endfor %}
         </div>
         <div class="form-check">
-            {{ form.seeking_venue(class_ = 'form-check-input', id=form.state, autofocus = true) }}
-            <label for="seeking_venue" class="form-check-label">Seeking Venue</label>
+            {{ form.seeking_talent(class_ = 'form-check-input', id=form.state, autofocus = true) }}
+            <label for="seeking_talent" class="form-check-label">Seeking Talent</label>
         </div>
         <div class="form-group">
             <label for="phone">Seeking Description</label>
@@ -61,7 +66,7 @@
                 <span class="error">{{ message }}</span>
             {% endfor %}
         </div>
-        <input type="submit" value="Edit Artist" class="btn btn-primary btn-lg btn-block">
+        <input type="submit" value="Edit Venue" class="btn btn-primary btn-lg btn-block">
     </form>
 </div>
 {% endblock %}
